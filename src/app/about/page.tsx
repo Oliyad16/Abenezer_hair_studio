@@ -38,7 +38,7 @@ export default function AboutPage() {
             <ScrollReveal direction="left">
               <div className="about-split__image">
                 <Image
-                  src="/images/hero/hero-bg.png"
+                  src="/images/IMG_0574.jpg"
                   alt="Inside Abenezer Hair Studio"
                   width={640}
                   height={800}

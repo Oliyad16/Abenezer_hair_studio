@@ -24,11 +24,11 @@ interface MediaContentCollection {
 
 const sampleMediaContent: MediaContentCollection = {
   video: {
-    src: 'https://me7aitdbxq.ufs.sh/f/2wsMIGDMQRdYuZ5R8ahEEZ4aQK56LizRdfBSqeDMsmUIrJN1',
+    src: '/videos/hero-video.mov',
     poster:
       '/images/gallery/braids-1.png',
     background:
-      '/images/hero/hero-bg.png', // authentic warm studio interior
+      '/videos/hero-video.mov', // authentic warm studio interior
     title: 'Abenezer Sanctuary',
     date: 'Est 2024',
     scrollToExpand: 'Scroll to unwind',
@@ -40,9 +40,9 @@ const sampleMediaContent: MediaContentCollection = {
     },
   },
   image: {
-    src: '/images/IMG_2727.png',
+    src: '/videos/hero-video.mov',
     background:
-      '/images/IMG_2727.png', // authentic warm studio interior
+      '/videos/hero-video.mov', // authentic warm studio interior
     title: 'Abenezer Sanctuary',
     date: 'Est 2024',
     scrollToExpand: 'Scroll to unwind',
@@ -86,7 +86,7 @@ const MediaContent = ({ mediaType }: { mediaType: 'video' | 'image' }) => {
 };
 
 export const ImageExpansion = () => {
-  const mediaType = 'image';
+  const mediaType = 'video';
   const currentMedia = sampleMediaContent[mediaType];
 
   useEffect(() => {

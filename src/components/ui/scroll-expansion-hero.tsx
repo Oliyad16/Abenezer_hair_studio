@@ -182,18 +182,33 @@ const ScrollExpandMedia = ({
             animate={{ opacity: 1 - scrollProgress }}
             transition={{ duration: 0.1 }}
           >
-            <Image
-              src={bgImageSrc}
-              alt='Background'
-              width={1920}
-              height={1080}
-              className='w-screen h-screen'
-              style={{
-                objectFit: 'cover',
-                objectPosition: 'center',
-              }}
-              priority
-            />
+            {bgImageSrc.match(/\.(mp4|webm|mov)$/i) ? (
+              <video
+                src={bgImageSrc}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className='w-screen h-screen'
+                style={{
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                }}
+              />
+            ) : (
+              <Image
+                src={bgImageSrc}
+                alt='Background'
+                width={1920}
+                height={1080}
+                className='w-screen h-screen'
+                style={{
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                }}
+                priority
+              />
+            )}
             <div className='absolute inset-0 bg-black/40' />
           </motion.div>
 

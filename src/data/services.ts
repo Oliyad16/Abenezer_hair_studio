@@ -39,7 +39,7 @@ export const services: Service[] = [
     priceFrom: 35,
     priceTo: 50,
     duration: '60 min',
-    image: '/images/portfolio/img_0538.jpeg',
+    image: '/images/portfolio/fullsizerender_15.jpeg',
     featured: true,
   },
   {
@@ -50,7 +50,7 @@ export const services: Service[] = [
     priceFrom: 25,
     priceTo: 35,
     duration: '45 min',
-    image: '/images/portfolio/img_0550.jpeg',
+    image: '/images/portfolio/fullsizerender__18_.jpeg',
   },
   {
     id: 'kids-haircut',
@@ -60,7 +60,7 @@ export const services: Service[] = [
     priceFrom: 15,
     priceTo: 25,
     duration: '30 min',
-    image: '/images/portfolio/img_0552.jpeg',
+    image: '/images/portfolio/fullsizerender__8_.jpeg',
   },
   {
     id: 'blowout-styling',
@@ -70,7 +70,7 @@ export const services: Service[] = [
     priceFrom: 45,
     priceTo: 75,
     duration: '45-60 min',
-    image: '/images/portfolio/img_0555.jpeg',
+    image: '/images/portfolio/fullsizerender_14.jpeg',
   },
   {
     id: 'shampoo-set',
@@ -80,7 +80,7 @@ export const services: Service[] = [
     priceFrom: 35,
     priceTo: 55,
     duration: '60 min',
-    image: '/images/portfolio/img_0564.jpeg',
+    image: '/images/portfolio/fullsizerender_9.jpeg',
   },
   {
     id: 'shampoo-spiral-curl',
@@ -90,7 +90,7 @@ export const services: Service[] = [
     priceFrom: 45,
     priceTo: 85,
     duration: '90 min',
-    image: '/images/portfolio/img_0716.jpeg',
+    image: '/images/portfolio/fullsizerender_7.jpeg',
   },
   {
     id: 'shampoo-wrap',
@@ -100,7 +100,7 @@ export const services: Service[] = [
     priceFrom: 25,
     priceTo: 50,
     duration: '60 min',
-    image: '/images/portfolio/img_0567.jpeg',
+    image: '/images/portfolio/img_0564.jpeg',
   },
   {
     id: 'flat-iron',
@@ -110,7 +110,7 @@ export const services: Service[] = [
     priceFrom: 15,
     priceTo: 45,
     duration: '30-45 min',
-    image: '/images/portfolio/img_0618.jpeg',
+    image: '/images/portfolio/fullsizerender.jpeg',
   },
   {
     id: 'updos',
@@ -132,7 +132,7 @@ export const services: Service[] = [
     priceFrom: 85,
     priceTo: 150,
     duration: '90-120 min',
-    image: '/images/portfolio/fullsizerender__10_.jpeg',
+    image: '/images/portfolio/fullsizerender_17.jpeg',
     featured: true,
   },
   {
@@ -143,7 +143,7 @@ export const services: Service[] = [
     priceFrom: 35,
     priceTo: 45,
     duration: '45-60 min',
-    image: '/images/portfolio/fullsizerender__13_.jpeg',
+    image: '/images/portfolio/fullsizerender__19_.jpeg',
   },
   {
     id: 'touch-up-color',
@@ -173,7 +173,7 @@ export const services: Service[] = [
     priceFrom: 85,
     priceTo: 125,
     duration: '90-120 min',
-    image: '/images/portfolio/fullsizerender_17.jpeg',
+    image: '/images/portfolio/fullsizerender_10.jpeg',
   },
   {
     id: 'partial-color',
@@ -183,7 +183,7 @@ export const services: Service[] = [
     priceFrom: 35,
     priceTo: 55,
     duration: '45-60 min',
-    image: '/images/portfolio/fullsizerender_2.jpeg',
+    image: '/images/portfolio/fullsizerender_16.jpeg',
   },
   {
     id: 'balayage-ombre',
@@ -193,7 +193,7 @@ export const services: Service[] = [
     priceFrom: 250,
     priceTo: 450,
     duration: '180-240 min',
-    image: '/images/portfolio/fullsizerender__14_.jpeg',
+    image: '/images/portfolio/fullsizerender_5.jpeg',
     featured: true,
   },
   {
@@ -204,7 +204,7 @@ export const services: Service[] = [
     priceFrom: 85,
     priceTo: 125,
     duration: '45 min',
-    image: '/images/portfolio/img_0847.png',
+    image: '/images/portfolio/fullsizerender_2.jpeg',
   },
   {
     id: 'color-correction',
@@ -213,7 +213,7 @@ export const services: Service[] = [
     description: 'Expert correction of previous color work — banding or uneven tone. Consultation required.',
     priceFrom: 0,
     duration: 'Varies',
-    image: '/images/portfolio/img_0855.png',
+    image: '/images/portfolio/fullsizerender_8.jpeg',
   },
 
   // ── Texture Services ─────────────────────────────
@@ -225,7 +225,7 @@ export const services: Service[] = [
     priceFrom: 95,
     priceTo: 125,
     duration: '90-120 min',
-    image: '/images/portfolio/img_0833.jpeg',
+    image: '/images/portfolio/img_0538.jpeg',
   },
   {
     id: 'relaxer-touch-up',
@@ -235,7 +235,7 @@ export const services: Service[] = [
     priceFrom: 70,
     priceTo: 90,
     duration: '60-90 min',
-    image: '/images/portfolio/img_0836.jpeg',
+    image: '/images/portfolio/img_0550.jpeg',
   },
   {
     id: 'full-texturizer',
@@ -245,7 +245,7 @@ export const services: Service[] = [
     priceFrom: 95,
     priceTo: 125,
     duration: '90 min',
-    image: '/images/portfolio/img_0837.jpeg',
+    image: '/images/portfolio/fullsizerender__12_.jpeg',
   },
   {
     id: 'texturizer-touch-up',
@@ -265,7 +265,7 @@ export const services: Service[] = [
     priceFrom: 95,
     priceTo: 125,
     duration: '120 min',
-    image: '/images/portfolio/fullsizerender__18_.jpeg',
+    image: '/images/portfolio/fullsizerender_6.jpeg',
   },
   {
     id: 'keratin-treatment',
@@ -275,7 +275,7 @@ export const services: Service[] = [
     priceFrom: 350,
     priceTo: 500,
     duration: '180-240 min',
-    image: '/images/portfolio/fullsizerender_6.jpeg',
+    image: '/images/portfolio/img_0552.jpeg',
     featured: true,
   },
   {
@@ -285,7 +285,7 @@ export const services: Service[] = [
     description: 'Fix uneven textures or overlapping processing. Consultation required.',
     priceFrom: 0,
     duration: 'Varies',
-    image: '/images/portfolio/img_0622.jpeg',
+    image: '/images/portfolio/fullsizerender__16_.jpeg',
   },
 
   // ── Hair & Scalp Treatments ──────────────────────
@@ -297,7 +297,7 @@ export const services: Service[] = [
     priceFrom: 25,
     priceTo: 55,
     duration: '30-45 min',
-    image: '/images/portfolio/img_0622.jpeg',
+    image: '/images/portfolio/fullsizerender__2_.jpeg',
   },
   {
     id: 'scalp-oil-treatment',
@@ -307,7 +307,7 @@ export const services: Service[] = [
     priceFrom: 25,
     priceTo: 50,
     duration: '30 min',
-    image: '/images/portfolio/img_0567.jpeg',
+    image: '/images/portfolio/fullsizerender__3_.jpeg',
   },
   {
     id: 'olaplex-repair',
@@ -317,7 +317,7 @@ export const services: Service[] = [
     priceFrom: 35,
     priceTo: 85,
     duration: '45-60 min',
-    image: '/images/portfolio/img_0552.jpeg',
+    image: '/images/portfolio/fullsizerender__4_.jpeg',
   },
   {
     id: 'nioxin-therapy',
@@ -327,7 +327,7 @@ export const services: Service[] = [
     priceFrom: 35,
     priceTo: 55,
     duration: '30-45 min',
-    image: '/images/portfolio/img_0538.jpeg',
+    image: '/images/portfolio/fullsizerender__5_.jpeg',
   },
   {
     id: 'dry-itchy-scalp',
@@ -337,7 +337,7 @@ export const services: Service[] = [
     priceFrom: 25,
     priceTo: 55,
     duration: '30-45 min',
-    image: '/images/portfolio/img_0716.jpeg',
+    image: '/images/portfolio/fullsizerender__6_.jpeg',
   },
 
   // ── Natural Hair Styling ─────────────────────────
@@ -359,7 +359,7 @@ export const services: Service[] = [
     priceFrom: 55,
     priceTo: 85,
     duration: '90-120 min',
-    image: '/images/portfolio/img_0833.jpeg',
+    image: '/images/portfolio/img_0837.jpeg',
   },
   {
     id: 'kids-single-braids',
@@ -381,7 +381,7 @@ export const services: Service[] = [
     priceFrom: 50,
     priceTo: 75,
     duration: '30-45 min',
-    image: '/images/portfolio/fullsizerender__5_.jpeg',
+    image: '/images/portfolio/fullsizerender_11.jpeg',
   },
   {
     id: 'extension-maintenance',
@@ -391,7 +391,7 @@ export const services: Service[] = [
     priceFrom: 60,
     priceTo: 75,
     duration: '60 min',
-    image: '/images/portfolio/fullsizerender__7_.jpeg',
+    image: '/images/portfolio/fullsizerender_13.jpeg',
   },
   {
     id: 'bang-trim',
@@ -401,7 +401,7 @@ export const services: Service[] = [
     priceFrom: 10,
     priceTo: 15,
     duration: '15 min',
-    image: '/images/portfolio/fullsizerender__3_.jpeg',
+    image: '/images/portfolio/fullsizerender__15_.jpeg',
   },
   {
     id: 'end-trim',
@@ -411,7 +411,7 @@ export const services: Service[] = [
     priceFrom: 15,
     priceTo: 20,
     duration: '15-20 min',
-    image: '/images/portfolio/fullsizerender__2_.jpeg',
+    image: '/images/portfolio/fullsizerender__14_.jpeg',
   },
   {
     id: 'eyebrow-tint',
@@ -421,7 +421,7 @@ export const services: Service[] = [
     priceFrom: 15,
     priceTo: 20,
     duration: '15-20 min',
-    image: '/images/portfolio/img_0545.jpeg',
+    image: '/images/portfolio/img_0847.png',
   },
   {
     id: 'hairline-relaxer',
@@ -431,7 +431,7 @@ export const services: Service[] = [
     priceFrom: 15,
     priceTo: 25,
     duration: '20-30 min',
-    image: '/images/portfolio/img_0567.jpeg',
+    image: '/images/portfolio/fullsizerender__13_.jpeg',
   },
   {
     id: 'hairline-color',
@@ -441,7 +441,7 @@ export const services: Service[] = [
     priceFrom: 25,
     priceTo: 35,
     duration: '30-45 min',
-    image: '/images/portfolio/fullsizerender__1_.jpeg',
+    image: '/images/portfolio/fullsizerender__10_.jpeg',
   },
   {
     id: 'hairline-highlights',
@@ -451,7 +451,7 @@ export const services: Service[] = [
     priceFrom: 45,
     priceTo: 65,
     duration: '45-60 min',
-    image: '/images/portfolio/fullsizerender_11.jpeg',
+    image: '/images/portfolio/fullsizerender_4.jpeg',
   },
 
   // ── Bridal & Special Events ──────────────────────
@@ -484,7 +484,7 @@ export const services: Service[] = [
     priceFrom: 150,
     priceTo: 250,
     duration: '60-90 min',
-    image: '/images/portfolio/img_0551.jpeg',
+    image: '/images/portfolio/img_0545.jpeg',
   },
   {
     id: 'event-styling',
@@ -494,7 +494,7 @@ export const services: Service[] = [
     priceFrom: 150,
     priceTo: 200,
     duration: '60-90 min',
-    image: '/images/portfolio/img_0622.jpeg',
+    image: '/images/portfolio/img_0551.jpeg',
   },
 ];
 

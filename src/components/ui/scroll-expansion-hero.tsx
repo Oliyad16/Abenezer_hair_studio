@@ -306,7 +306,7 @@ const ScrollExpandMedia = ({
                 <div className='flex flex-col items-center text-center relative z-10 mt-4 transition-none'>
                   {date && (
                     <p
-                      className='text-2xl text-white drop-shadow-md'
+                      className='text-2xl text-[var(--color-accent)] drop-shadow-md font-semibold'
                       style={{ transform: `translateX(-${textTranslateX}vw)` }}
                     >
                       {date}
@@ -314,7 +314,7 @@ const ScrollExpandMedia = ({
                   )}
                   {scrollToExpand && (
                     <p
-                      className='text-white font-medium text-center drop-shadow-md'
+                      className='text-[var(--color-accent)] font-semibold text-center drop-shadow-md'
                       style={{ transform: `translateX(${textTranslateX}vw)` }}
                     >
                       {scrollToExpand}

@@ -30,7 +30,7 @@ const sampleMediaContent: MediaContentCollection = {
     background:
       '/videos/hero-video.mov', // authentic warm studio interior
     title: 'Abenezer Sanctuary',
-    date: 'Est 2024',
+    date: 'EST. 2016',
     scrollToExpand: 'Scroll to unwind',
     about: {
       overview:
@@ -44,7 +44,7 @@ const sampleMediaContent: MediaContentCollection = {
     background:
       '/videos/hero-video.mov', // authentic warm studio interior
     title: 'Abenezer Sanctuary',
-    date: 'Est 2024',
+    date: 'EST. 2016',
     scrollToExpand: 'Scroll to unwind',
     about: {
       overview:

@@ -90,7 +90,9 @@ Additional Notes:
 ${formData.notes || 'None'}
     `.trim();
 
-    window.location.href = `mailto:${business.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const smsHref = business.phoneHref.replace('tel:', 'sms:');
+    // Using ?body= which is standard for modern devices
+    window.location.href = `${smsHref}?body=${encodeURIComponent(body)}`;
   };
 
   const selectedService = services.find((s) => s.id === formData.serviceId);
@@ -260,10 +262,10 @@ ${formData.notes || 'None'}
           
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <button type="button" onClick={handlePrev} className="btn btn--outline">Back</button>
-            <button type="submit" className="btn btn--primary">Email Booking Request</button>
+            <button type="submit" className="btn btn--primary">Text Booking Request</button>
           </div>
           <p style={{ textAlign: 'center', fontSize: '0.875rem', color: 'var(--color-text-muted)', marginTop: '2rem' }}>
-            This will draft an email to the studio containing your request details.
+            This will draft a text message to the studio containing your request details.
           </p>
         </form>
       )}

@@ -31,6 +31,24 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Featured Single Image */}
+      <section className="section section--sm pt-0" id="services-featured-image">
+        <div className="container">
+          <ScrollReveal>
+            <div style={{ position: 'relative', width: '100%', height: '500px', borderRadius: 'var(--radius-xl)', overflow: 'hidden' }}>
+              <Image
+                src="/images/portfolio/img_0549.jpeg"
+                alt="Elegant hair styling at Abenezer Hair Studio"
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
+                quality={90}
+                priority
+              />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Service Categories */}
       {categories.map((category) => {
         const categoryServices = services.filter((s) => s.category === category);
@@ -39,35 +57,26 @@ export default function ServicesPage() {
         return (
           <section
             key={category}
-            className="section"
+            className="section pt-0"
             id={category}
           >
             <div className="container">
               <ScrollReveal>
-                <div className="section-intro">
+                <div className="section-intro pl-0 text-left" style={{ textAlign: 'left', marginBottom: 'var(--space-xl)' }}>
                   <p className="subheading">{categoryLabels[category]}</p>
                   <h2 className="heading-section">{categoryLabels[category]}</h2>
-                  <div className="gold-line" />
+                  <div className="gold-line gold-line--left" />
                 </div>
               </ScrollReveal>
 
-              <div className="grid grid--3 reveal-stagger">
+              <div className="grid grid--2 reveal-stagger">
                 {categoryServices.map((service, i) => (
-                  <ScrollReveal key={service.id} delay={i * 100}>
-                    <div className="service-card" id={`service-${service.id}`}>
-                      <div className="service-card__image-wrap">
-                        <Image
-                          src={service.image}
-                          alt={service.name}
-                          width={600}
-                          height={375}
-                          quality={80}
-                        />
-                      </div>
-                      <div className="service-card__body">
-                        <h3 className="service-card__name">{service.name}</h3>
-                        <p className="service-card__desc">{service.description}</p>
-                        <div className="service-card__meta">
+                  <ScrollReveal key={service.id} delay={i * 50}>
+                    <div className="service-card p-xl" id={`service-${service.id}`} style={{ padding: 'var(--space-xl)', background: 'var(--color-bg-secondary)', borderRadius: 'var(--radius-lg)', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                      <div className="service-card__body" style={{ padding: 0, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                        <h3 className="service-card__name" style={{ fontSize: 'var(--text-lg)', fontWeight: 600, marginBottom: 'var(--space-sm)' }}>{service.name}</h3>
+                        <p className="service-card__desc" style={{ flexGrow: 1, marginBottom: 'var(--space-md)' }}>{service.description}</p>
+                        <div className="service-card__meta" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-md)', fontWeight: 500, color: 'var(--color-accent)' }}>
                           <span className="service-card__price">
                             {service.priceTo
                               ? `$${service.priceFrom} – $${service.priceTo}`
@@ -79,7 +88,7 @@ export default function ServicesPage() {
                         </div>
                         <Link
                           href="/book"
-                          className="btn btn--primary btn--sm mt-md"
+                          className="btn btn--outline btn--sm mt-auto"
                           style={{ width: '100%' }}
                         >
                           Book This Service

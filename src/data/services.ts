@@ -20,13 +20,13 @@ export type ServiceCategory =
   | 'bridal';
 
 export const categoryLabels: Record<ServiceCategory, string> = {
-  cut_design: 'Hair cut & Design',
-  color: 'Color Services',
-  texture: 'Texture Services',
-  treatments: 'Hair & Scalp Treatments',
-  natural: 'Natural Hair Styling',
+  cut_design: 'Cuts',
+  color: 'Color / Highlights',
+  texture: 'Spiral & Texture',
+  treatments: 'Treatments',
+  natural: 'Natural Styling',
   alacarte: 'À la carte',
-  bridal: 'Bridal & Special Events',
+  bridal: 'Bridal & Events',
 };
 
 export const services: Service[] = [

@@ -166,7 +166,7 @@ export default function HomePage() {
             <ScrollReveal direction="left">
               <div className="about-split__image" style={{ borderRadius: 'var(--radius-2xl)', overflow: 'hidden', boxShadow: 'var(--shadow-xl)', aspectRatio: '896/1074', position: 'relative' }}>
                 <Image
-                  src="/images/IMG_2727.png"
+                  src="/images/Rodi_Image.jpeg"
                   alt="Rodas, Owner of Abenezer Hair Studio"
                   fill
                   quality={100}

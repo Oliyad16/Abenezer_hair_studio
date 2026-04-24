@@ -94,7 +94,7 @@ export default function Footer() {
             © {currentYear} {business.name}. All rights reserved.
           </div>
           <div className="footer__credit">
-            Website by <a href="#">Rodas Digital</a>
+            Website by <a href="https://www.thelivingstonesolution.com/" target="_blank" rel="noopener noreferrer" className="text-blue-900 font-bold hover:text-blue-700 transition-colors">The Livingstone Solution</a>
           </div>
         </div>
       </div>

@@ -23,6 +23,8 @@ interface ScrollExpandMediaProps {
   children?: ReactNode;
 }
 
+const isVideoAsset = (src: string): boolean => /\.(mp4|webm|mov)$/i.test(src);
+
 const ScrollExpandMedia = ({
   mediaType = 'video',
   mediaSrc,
@@ -41,6 +43,71 @@ const ScrollExpandMedia = ({
   const [isMobileState, setIsMobileState] = useState<boolean>(false);
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
+  const bgVideoRef = useRef<HTMLVideoElement | null>(null);
+  const innerVideoRef = useRef<HTMLVideoElement | null>(null);
+  const useVideoBackground =
+    isVideoAsset(bgImageSrc) && !(mediaType === 'video' && bgImageSrc === mediaSrc);
+  const backgroundImageSrc = useVideoBackground ? bgImageSrc : posterSrc ?? bgImageSrc;
+
+  useEffect(() => {
+    const videos = [bgVideoRef.current, innerVideoRef.current].filter(
+      (video): video is HTMLVideoElement => Boolean(video)
+    );
+
+    const attemptPlayback = (video: HTMLVideoElement): void => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('playsinline', 'true');
+      video.setAttribute('webkit-playsinline', 'true');
+
+      const playPromise = video.play();
+      if (playPromise) {
+        playPromise.catch(() => undefined);
+      }
+    };
+
+    const playAllVideos = (): void => {
+      videos.forEach(attemptPlayback);
+    };
+
+    const handleVisibilityChange = (): void => {
+      if (document.visibilityState === 'visible') {
+        playAllVideos();
+      }
+    };
+
+    const retryTimers = [
+      window.setTimeout(playAllVideos, 0),
+      window.setTimeout(playAllVideos, 250),
+      window.setTimeout(playAllVideos, 1000),
+    ];
+
+    videos.forEach((video) => {
+      video.preload = 'auto';
+      video.addEventListener('loadedmetadata', playAllVideos);
+      video.addEventListener('loadeddata', playAllVideos);
+      video.addEventListener('canplay', playAllVideos);
+    });
+
+    window.addEventListener('load', playAllVideos);
+    window.addEventListener('pageshow', playAllVideos);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    playAllVideos();
+
+    return () => {
+      retryTimers.forEach((timer) => window.clearTimeout(timer));
+      videos.forEach((video) => {
+        video.removeEventListener('loadedmetadata', playAllVideos);
+        video.removeEventListener('loadeddata', playAllVideos);
+        video.removeEventListener('canplay', playAllVideos);
+      });
+      window.removeEventListener('load', playAllVideos);
+      window.removeEventListener('pageshow', playAllVideos);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [mediaSrc, bgImageSrc, posterSrc]);
 
   useEffect(() => {
     setScrollProgress(0);
@@ -182,14 +249,16 @@ const ScrollExpandMedia = ({
             animate={{ opacity: 1 - scrollProgress }}
             transition={{ duration: 0.1 }}
           >
-            {bgImageSrc.match(/\.(mp4|webm|mov)$/i) ? (
+            {useVideoBackground ? (
               <video
-                src={bgImageSrc}
+                ref={bgVideoRef}
+                src={backgroundImageSrc}
                 autoPlay
                 muted
                 loop
                 playsInline
-                className='w-screen h-screen'
+                preload='auto'
+                className='w-full h-full'
                 style={{
                   objectFit: 'cover',
                   objectPosition: 'center',
@@ -197,11 +266,11 @@ const ScrollExpandMedia = ({
               />
             ) : (
               <Image
-                src={bgImageSrc}
+                src={backgroundImageSrc}
                 alt='Background'
                 width={1920}
                 height={1080}
-                className='w-screen h-screen'
+                className='w-full h-full'
                 style={{
                   objectFit: 'cover',
                   objectPosition: 'center',
@@ -259,6 +328,7 @@ const ScrollExpandMedia = ({
                   ) : (
                     <div className='relative w-full h-full pointer-events-none'>
                       <video
+                        ref={innerVideoRef}
                         src={mediaSrc}
                         poster={posterSrc}
                         autoPlay

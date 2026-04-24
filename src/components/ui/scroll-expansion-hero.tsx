@@ -45,9 +45,7 @@ const ScrollExpandMedia = ({
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const bgVideoRef = useRef<HTMLVideoElement | null>(null);
   const innerVideoRef = useRef<HTMLVideoElement | null>(null);
-  const useVideoBackground =
-    isVideoAsset(bgImageSrc) && !(mediaType === 'video' && bgImageSrc === mediaSrc);
-  const backgroundImageSrc = useVideoBackground ? bgImageSrc : posterSrc ?? bgImageSrc;
+  const useVideoBackground = isVideoAsset(bgImageSrc);
 
   useEffect(() => {
     const videos = [bgVideoRef.current, innerVideoRef.current].filter(
@@ -252,7 +250,7 @@ const ScrollExpandMedia = ({
             {useVideoBackground ? (
               <video
                 ref={bgVideoRef}
-                src={backgroundImageSrc}
+                src={bgImageSrc}
                 autoPlay
                 muted
                 loop
@@ -266,7 +264,7 @@ const ScrollExpandMedia = ({
               />
             ) : (
               <Image
-                src={backgroundImageSrc}
+                src={bgImageSrc}
                 alt='Background'
                 width={1920}
                 height={1080}

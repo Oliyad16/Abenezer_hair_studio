@@ -25,8 +25,7 @@ interface MediaContentCollection {
 const sampleMediaContent: MediaContentCollection = {
   video: {
     src: '/videos/hero-video.mp4',
-    poster: '/images/gallery/braids-1.png',
-    background: '/videos/hero-video.mp4',
+    background: '/videos/hero-video.mov',
     title: 'Abenezer Sanctuary',
     date: 'EST. 2016',
     scrollToExpand: 'Scroll to unwind',
@@ -39,7 +38,7 @@ const sampleMediaContent: MediaContentCollection = {
   },
   image: {
     src: '/videos/hero-video.mp4',
-    background: '/videos/hero-video.mp4',
+    background: '/videos/hero-video.mov',
     title: 'Abenezer Sanctuary',
     date: 'EST. 2016',
     scrollToExpand: 'Scroll to unwind',
@@ -95,7 +94,6 @@ export const ImageExpansion = () => {
       <ScrollExpandMedia
         mediaType={mediaType}
         mediaSrc={currentMedia.src}
-        posterSrc={currentMedia.poster}
         bgImageSrc={currentMedia.background}
         title={currentMedia.title}
         date={currentMedia.date}

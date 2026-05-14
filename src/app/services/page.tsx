@@ -2,8 +2,10 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { services, categoryLabels, type ServiceCategory } from '@/data/services';
+import { business } from '@/data/business';
 import ScrollReveal from '@/components/ScrollReveal';
 import BookingCTA from '@/components/BookingCTA';
+import { generateBreadcrumbSchema, generateServiceSchema } from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'Services & Pricing',
@@ -13,9 +15,27 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   const categories = Object.keys(categoryLabels) as ServiceCategory[];
+  const totalServices = services.length;
+  const minPrice = Math.min(...services.filter(s => s.priceFrom > 0).map(s => s.priceFrom));
+  const maxPrice = Math.max(...services.filter(s => s.priceTo).map(s => s.priceTo!));
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: business.website },
+    { name: 'Services', url: `${business.website}/services` },
+  ]);
+  const serviceSchema = generateServiceSchema();
 
   return (
     <>
+      {/* Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+
       {/* Page Header */}
       <section className="page-header" id="services-header">
         <div className="container">
@@ -31,16 +51,67 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Answer-First Definition (GEO Agent 2) */}
+      <section className="section section--sm pt-0" id="services-overview">
+        <div className="container">
+          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+            <h2 className="heading-section" style={{ fontSize: 'var(--text-lg)' }}>
+              Hair Services at Abenezer Hair Studio
+            </h2>
+            <p className="body-text" style={{ lineHeight: 1.8 }}>
+              Abenezer Hair Studio provides {totalServices}+ professional hair services
+              across {categories.length} categories, including cuts, color and highlights,
+              texture services, scalp treatments, natural hair styling, bridal styling, and
+              à la carte add-ons. Pricing ranges from ${minPrice} to ${maxPrice}, with
+              appointment durations from 15 minutes to 4 hours depending on the service.
+              All services are performed one-on-one by owner and lead stylist Rodas G.
+            </p>
+
+            {/* Service Overview Table (GEO Agent 3 — Stats) */}
+            <div style={{ overflowX: 'auto', marginTop: 'var(--space-lg)' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--text-sm)' }}>
+                <thead>
+                  <tr style={{ borderBottom: '2px solid var(--color-accent)', textAlign: 'left' }}>
+                    <th style={{ padding: 'var(--space-sm) var(--space-md)' }}>Category</th>
+                    <th style={{ padding: 'var(--space-sm) var(--space-md)' }}># Services</th>
+                    <th style={{ padding: 'var(--space-sm) var(--space-md)' }}>Price Range</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {categories.map((cat) => {
+                    const catServices = services.filter(s => s.category === cat);
+                    const catMin = Math.min(...catServices.filter(s => s.priceFrom > 0).map(s => s.priceFrom));
+                    const catMaxPrices = catServices.filter(s => s.priceTo).map(s => s.priceTo!);
+                    const catMax = catMaxPrices.length > 0 ? Math.max(...catMaxPrices) : catMin;
+                    return (
+                      <tr key={cat} style={{ borderBottom: '1px solid var(--color-border, rgba(255,255,255,0.1))' }}>
+                        <td style={{ padding: 'var(--space-sm) var(--space-md)', fontWeight: 500 }}>
+                          <a href={`#${cat}`} style={{ color: 'var(--color-accent)' }}>{categoryLabels[cat]}</a>
+                        </td>
+                        <td style={{ padding: 'var(--space-sm) var(--space-md)' }}>{catServices.length}</td>
+                        <td style={{ padding: 'var(--space-sm) var(--space-md)' }}>
+                          {catMax > catMin ? `$${catMin} – $${catMax}` : `From $${catMin}`}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Single Image */}
       <section className="section section--sm pt-0" id="services-featured-image">
         <div className="container">
           <ScrollReveal>
             <div style={{ position: 'relative', width: '100%', height: '500px', borderRadius: 'var(--radius-xl)', overflow: 'hidden' }}>
               <Image
-                src="/images/portfolio/img_0549.jpeg"
-                alt="Elegant hair styling at Abenezer Hair Studio"
+                src="/images/rodas-owner.jpeg"
+                alt="Rodas styling a client at Abenezer Hair Studio"
                 fill
-                style={{ objectFit: 'cover', objectPosition: 'center' }}
+                style={{ objectFit: 'cover', objectPosition: 'right' }}
                 quality={90}
                 priority
               />

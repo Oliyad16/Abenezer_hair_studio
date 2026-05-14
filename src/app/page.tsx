@@ -1,20 +1,65 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { business } from '@/data/business';
-import { services } from '@/data/services';
+import { services, categoryLabels } from '@/data/services';
 import ScrollReveal from '@/components/ScrollReveal';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
 import BookingCTA from '@/components/BookingCTA';
 import { ImageExpansion } from '@/components/blocks/demo';
+import { generateBreadcrumbSchema } from '@/lib/schema';
 export default function HomePage() {
   const featuredServices = services.filter((s) => s.featured);
   const currentYear = new Date().getFullYear();
   const yearsInBusiness = currentYear - business.yearEstablished;
+  const totalServices = services.length;
+  const categoryCount = Object.keys(categoryLabels).length;
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: business.website },
+  ]);
 
   return (
     <>
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       {/* ── Scroll Expansion Hero ────────────────────────────────────────── */}
       <ImageExpansion />
+
+      {/* ── Answer-First Definition Block (GEO Agent 2) ─────────────────── */}
+      <section className="section section--sm" id="answer-first-definition">
+        <div className="container">
+          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+            <h2 className="heading-section" style={{ fontSize: 'var(--text-xl)' }}>
+              What Is Abenezer Hair Studio?
+            </h2>
+            <p className="body-text" style={{ fontSize: 'var(--text-md)', lineHeight: 1.8 }}>
+              Abenezer Hair Studio is an intimate, one-on-one hair salon located at
+              11160 Veirs Mill Rd (Suite 116), Wheaton, Maryland. Founded in {business.yearEstablished} by
+              Rodas G., the studio specializes in color, bridal styling, silk press, and
+              services for all hair types. Each appointment provides dedicated, private
+              attention — no shared chairs, no rushing, no distractions.
+            </p>
+
+            {/* At a Glance — Micro-Fact Box (GEO Agent 3) */}
+            <div className="card" style={{ padding: 'var(--space-xl)', marginTop: 'var(--space-lg)', background: 'var(--color-bg-secondary)', borderRadius: 'var(--radius-lg)' }}>
+              <h3 style={{ fontSize: 'var(--text-base)', fontWeight: 600, marginBottom: 'var(--space-md)', color: 'var(--color-accent)' }}>
+                At a Glance
+              </h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-sm)' }}>
+                <li>📅 <strong>Established:</strong> {business.yearEstablished}</li>
+                <li>✂️ <strong>Services:</strong> {totalServices}+ across {categoryCount} categories</li>
+                <li>🏠 <strong>Studio type:</strong> Private one-on-one suite</li>
+                <li>💰 <strong>Price range:</strong> $10 – $1,000</li>
+                <li>🕐 <strong>Hours:</strong> Mon–Sat (closed Sunday)</li>
+                <li>📍 <strong>Location:</strong> Wheaton, MD</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ── Trust Bar ───────────────────────────────────── */}
       <section className="trust-bar" id="trust-bar">
@@ -55,7 +100,7 @@ export default function HomePage() {
               </h2>
               <div className="gold-line" />
               <p className="body-text">
-                At Abenezer, your appointment is never rushed. It&apos;s never impersonal.
+                At Abenezer, your appointment is never rushed. It is never impersonal.
                 This is your time — to breathe, to talk, to be heard, and to leave
                 feeling lighter in every way.
               </p>
@@ -67,7 +112,7 @@ export default function HomePage() {
               {
                 icon: '♥',
                 title: 'You Are Heard',
-                text: 'This isn\'t assembly-line service. It\'s a genuine, one-on-one conversation where you\'re not just a client — you\'re a person who matters.',
+                text: 'This is not assembly-line service. It is a genuine, one-on-one conversation where you are not just a client — you are a person who matters.',
               },
               {
                 icon: '✦',
@@ -77,7 +122,7 @@ export default function HomePage() {
               {
                 icon: '★',
                 title: 'You Leave Lighter',
-                text: 'It\'s not just about how your hair looks walking out. It\'s about how you feel. Renewed, confident, and reminded that someone cares.',
+                text: 'It is not just about how your hair looks walking out. It is about how you feel. Renewed, confident, and reminded that someone cares.',
               },
             ].map((value, i) => (
               <ScrollReveal key={i} delay={i * 100}>
@@ -112,7 +157,7 @@ export default function HomePage() {
               <h2 className="heading-section">Services Crafted with Care</h2>
               <div className="gold-line" />
               <p className="body-text">
-                Whether it&apos;s a transformative color, your wedding day styling, or
+                Whether it is a transformative color, your wedding day styling, or
                 simply a moment of care for yourself — every service is personal.
               </p>
             </div>
@@ -166,11 +211,11 @@ export default function HomePage() {
             <ScrollReveal direction="left">
               <div className="about-split__image" style={{ borderRadius: 'var(--radius-2xl)', overflow: 'hidden', boxShadow: 'var(--shadow-xl)', aspectRatio: '896/1074', position: 'relative' }}>
                 <Image
-                  src="/images/Rodi_Image.jpeg"
+                  src="/images/rodas-owner.jpeg"
                   alt="Rodas, Owner of Abenezer Hair Studio"
                   fill
                   quality={100}
-                  style={{ objectFit: 'cover', objectPosition: 'top' }}
+                  style={{ objectFit: 'cover', objectPosition: 'right' }}
                 />
               </div>
             </ScrollReveal>
@@ -183,7 +228,7 @@ export default function HomePage() {
                 </h2>
                 <div className="gold-line gold-line--left" />
                 <p className="body-text mb-lg">
-                  Rodas didn&apos;t just open a hair studio. She created a space where
+                  Rodas did not just open a hair studio. She created a space where
                   people can come as they are — stressed, tired, celebrating, or
                   just needing someone who listens. For over {yearsInBusiness} years,
                   Abenezer Hair Studio has been that space for the Wheaton and
@@ -191,9 +236,9 @@ export default function HomePage() {
                 </p>
                 <p className="body-text mb-xl">
                   In this small, intimate studio, there are no distractions.
-                  It&apos;s just you and Rodas — your hair being transformed while
+                  It is just you and Rodas — your hair being transformed while
                   the weight on your shoulders gets a little lighter.
-                  That&apos;s the Abenezer experience.
+                  That is the Abenezer experience.
                 </p>
                 <Link href="/about" className="btn btn--outline" id="about-learn-more">
                   Learn More About Rodas →
@@ -248,6 +293,72 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Service Taxonomy (GEO Agent 2 — What We Do / Don't Do) ──── */}
+      <section className="section" id="service-taxonomy">
+        <div className="container">
+          <ScrollReveal>
+            <div className="section-intro">
+              <p className="subheading">Service Overview</p>
+              <h2 className="heading-section">What We Do</h2>
+              <div className="gold-line" />
+              <p className="body-text">
+                Abenezer Hair Studio offers {totalServices}+ professional hair services
+                across {categoryCount} categories, serving clients in Wheaton, Silver Spring,
+                and the greater Montgomery County area. All services are performed
+                one-on-one by Rodas G., with over {yearsInBusiness} years of experience.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid--2" style={{ gap: 'var(--space-lg)' }}>
+            <ScrollReveal>
+              <div className="card" style={{ padding: 'var(--space-xl)' }}>
+                <h3 className="heading-card mb-md" style={{ color: 'var(--color-accent)' }}>✓ Services We Provide</h3>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
+                  <li>• Precision cuts for women, men, and children</li>
+                  <li>• Full color, highlights, balayage, and color correction</li>
+                  <li>• Silk press and blowout styling</li>
+                  <li>• Bridal and special event hair</li>
+                  <li>• Keratin treatments and relaxers</li>
+                  <li>• Deep conditioning and scalp treatments</li>
+                  <li>• Natural hair styling (twists, braids, braid-outs)</li>
+                  <li>• Extensions (clip-in placement and maintenance)</li>
+                </ul>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={100}>
+              <div className="card" style={{ padding: 'var(--space-xl)' }}>
+                <h3 className="heading-card mb-md">✗ Services We Do Not Provide</h3>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
+                  <li>• Locs installation or maintenance</li>
+                  <li>• Sew-in weave installation</li>
+                  <li>• Nail or skincare services</li>
+                  <li>• Barbering (fades, lineups)</li>
+                  <li>• Eyelash extensions</li>
+                </ul>
+                <p className="body-text" style={{ marginTop: 'var(--space-md)', fontSize: 'var(--text-sm)' }}>
+                  If you are unsure whether a service is available, please <Link href="/contact">contact us</Link> and we will be happy to help.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Expert Quote Block (GEO Agent 5) */}
+          <ScrollReveal>
+            <div style={{ maxWidth: '700px', margin: 'var(--space-2xl) auto 0', padding: 'var(--space-xl)', borderLeft: '3px solid var(--color-accent)', background: 'var(--color-bg-secondary)', borderRadius: '0 var(--radius-lg) var(--radius-lg) 0' }}>
+              <p style={{ fontStyle: 'italic', fontSize: 'var(--text-md)', lineHeight: 1.7, marginBottom: 'var(--space-md)' }}>
+                &ldquo;For me, doing hair is not just a craft — it is creating a moment of
+                peace in someone&rsquo;s day. Every person who sits in my chair deserves to
+                feel truly seen and heard.&rdquo;
+              </p>
+              <p style={{ fontWeight: 600, color: 'var(--color-accent)' }}>
+                — Rodas G., Owner &amp; Lead Stylist, Abenezer Hair Studio
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* ── Testimonials ────────────────────────────────── */}
       <section className="section section--accent" id="testimonials-section">
         <div className="container">
@@ -257,7 +368,7 @@ export default function HomePage() {
               <h2 className="heading-section">More Than Just Hair</h2>
               <div className="gold-line" />
               <p className="body-text">
-                Don&apos;t just take our word for it. Here&apos;s what our community says
+                Do not just take our word for it. Here is what our community says
                 about the Abenezer experience.
               </p>
             </div>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { business } from '@/data/business';
 import ScrollReveal from '@/components/ScrollReveal';
 import FAQ from '@/components/FAQ';
-import { generateFAQSchema } from '@/lib/schema';
+import { generateFAQSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import BookingForm from '@/components/BookingForm';
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ const faqs = [
   {
     question: 'What makes Abenezer different from other salons?',
     answer:
-      'Abenezer is a private, one-on-one studio. When you\'re here, it\'s just you and Rodas — no noise, no rushing, no distractions. It\'s a space where your hair is cared for with skill and you as a person are cared for with warmth. Many of our clients say it feels less like a salon and more like visiting a friend who happens to be incredibly talented with hair.',
+      'Abenezer is a private, one-on-one studio. When you are here, it is just you and Rodas — no noise, no rushing, no distractions. It is a space where your hair is cared for with skill and you as a person are cared for with warmth. Many of our clients say it feels less like a salon and more like visiting a friend who happens to be incredibly talented with hair.',
   },
   {
     question: 'Do you accept walk-ins?',
@@ -30,7 +30,7 @@ const faqs = [
   {
     question: 'What is your cancellation policy?',
     answer:
-      'We ask for at least 24 hours notice for cancellations or rescheduling. Because each appointment is dedicated time just for you, no-shows affect our ability to serve others. Life happens — just give us a call and we\'ll work it out.',
+      'We ask for at least 24 hours notice for cancellations or rescheduling. Because each appointment is dedicated time just for you, no-shows affect our ability to serve others. Life happens — just give us a call and we will work it out.',
   },
   {
     question: 'How should I prepare for my appointment?',
@@ -40,7 +40,7 @@ const faqs = [
   {
     question: 'Do you work with all hair types?',
     answer:
-      'Absolutely. Rodas has over 15 years of experience across all hair types and textures. Whether your hair is straight, curly, coily, natural, or processed — you\'re in expert hands.',
+      'Absolutely. Rodas has over 15 years of experience across all hair types and textures. Whether your hair is straight, curly, coily, natural, or processed — you are in expert hands.',
   },
   {
     question: 'Do you offer bridal and event services?',
@@ -50,18 +50,26 @@ const faqs = [
   {
     question: 'Do you offer services for children?',
     answer:
-      'Yes! We\'re patient, gentle, and experienced with children of all ages. It\'s a calm, comfortable environment where kids feel safe.',
+      'Yes! We are patient, gentle, and experienced with children of all ages. It is a calm, comfortable environment where kids feel safe.',
   },
 ];
 
 export default function BookPage() {
   const faqSchema = generateFAQSchema(faqs);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: business.website },
+    { name: 'Book', url: `${business.website}/book` },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <section className="page-header" id="book-header">
@@ -72,9 +80,28 @@ export default function BookPage() {
           </h1>
           <div className="gold-line" />
           <p className="page-header__text">
-            This isn&apos;t just an appointment — it&apos;s your time to be cared for.
+            This is not just an appointment — it is your time to be cared for.
             Choose your service, and let Rodas take care of the rest.
           </p>
+        </div>
+      </section>
+
+      {/* Answer-First Booking Definition (GEO Agent 2) */}
+      <section className="section section--sm" id="booking-answer-first">
+        <div className="container">
+          <div style={{ maxWidth: '700px', margin: '0 auto' }}>
+            <h2 className="heading-section" style={{ fontSize: 'var(--text-lg)' }}>
+              How to Book an Appointment
+            </h2>
+            <p className="body-text" style={{ lineHeight: 1.8 }}>
+              Appointments at Abenezer Hair Studio can be booked by calling
+              {' '}<a href={business.phoneHref}>{business.phone}</a>, messaging on
+              {' '}<a href={business.social.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>,
+              or using the booking form below. Because this is a private, one-on-one studio,
+              advance booking is recommended — especially for color, bridal, and keratin services
+              which require 90 minutes to 4 hours of dedicated time.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -104,15 +131,15 @@ export default function BookPage() {
             {[
               {
                 title: 'A Warm Welcome',
-                text: 'When you arrive at Studio 116, you\'ll step into a calm, private space. No waiting room chaos. No competing noise. Just a warm greeting and a comfortable chair waiting for you.',
+                text: 'When you arrive at Studio 116, you will step into a calm, private space. No waiting room chaos. No competing noise. Just a warm greeting and a comfortable chair waiting for you.',
               },
               {
                 title: 'Undivided Attention',
-                text: 'Your appointment is your time. Rodas won\'t be splitting focus between three other clients. From the moment you sit down to the moment you leave — the attention is all on you.',
+                text: 'Your appointment is your time. Rodas will not be splitting focus between three other clients. From the moment you sit down to the moment you leave — the attention is all on you.',
               },
               {
                 title: 'More Than Hair',
-                text: 'Yes, you\'ll leave with beautiful hair. But you\'ll also leave feeling heard, cared for, and a little lighter than when you walked in. That\'s the experience we protect.',
+                text: 'Yes, you will leave with beautiful hair. But you will also leave feeling heard, cared for, and a little lighter than when you walked in. That is the experience we protect.',
               },
             ].map((policy, i) => (
               <ScrollReveal key={i} delay={i * 100}>
@@ -148,7 +175,7 @@ export default function BookPage() {
               <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
             </div>
             <h2 className="heading-section">
-              A Place Where You&apos;re More Than a Client
+              A Place Where You Are More Than a Client
             </h2>
             <p className="body-text" style={{ margin: '0 auto' }}>
               Join the community of people who come to {business.name} not just for

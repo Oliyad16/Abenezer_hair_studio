@@ -35,6 +35,14 @@ export const metadata: Metadata = {
     'hair salon Montgomery County',
     'Abenezer Hair Studio',
     'Rodas hair stylist',
+    'balayage Wheaton MD',
+    'keratin treatment Silver Spring',
+    'hair salon near me Wheaton',
+    'best hair colorist Montgomery County MD',
+    'private hair studio Maryland',
+    'hair treatments Wheaton Maryland',
+    'wedding hair stylist Wheaton',
+    'natural hair salon Silver Spring MD',
   ],
   authors: [{ name: business.name }],
   openGraph: {
@@ -46,7 +54,7 @@ export const metadata: Metadata = {
     description: business.description,
     images: [
       {
-        url: `${business.website}/images/hero/hero-bg.png`,
+        url: `${business.website}/images/og-preview.jpg`,
         width: 1200,
         height: 630,
         alt: `${business.name} — Wheaton, Maryland`,
@@ -57,7 +65,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${business.name} | Intimate Hair Studio in Wheaton, MD`,
     description: business.description,
-    images: [`${business.website}/images/hero/hero-bg.png`],
+    images: [`${business.website}/images/og-preview.jpg`],
   },
   robots: {
     index: true,
